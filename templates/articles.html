@@ -9,7 +9,7 @@
 <div class="articles-div-main">
     <h2 style="color: #fff; ">Trending Posts</h2>
     {% for article in allArticles %}
-  <div class="article-card">
+  <div class="article-card" style="width: 100%;">
     <a style="text-decoration: none;" href="/article/{{article.article_id}}">
       <div class="top-bar">
         <span class="views">{{ article.views }} Views</span>

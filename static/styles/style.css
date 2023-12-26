@@ -97,6 +97,92 @@ body {
   border-radius: 0.4rem;
 }
 
+.login-form-main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.login-form-main .left {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #205080;
+  border-radius: 0 5rem 5rem 0;
+  background-image: url("../images/loginbg.jpg");
+  background-size: cover;
+}
+.login-form-main .right {
+  width: 50%;
+  height: 70%;
+  padding: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-form-main .right .title {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.login-form-main .right form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.login-form-main .right form .link {
+  color: rgba(255, 255, 255, 0.5019607843);
+  align-self: flex-end;
+}
+.login-form-main .right form .link a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 900;
+}
+.login-form-main .right form .link a:hover {
+  text-decoration: underline;
+}
+.login-form-main .right form input {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3607843137);
+  color: #fff;
+  transition: 0.2s ease-in-out;
+}
+.login-form-main .right form input:focus {
+  border: 2px solid #ffffff;
+}
+.login-form-main .right form button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  background-size: 200% auto;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  background-image: linear-gradient(to right, #1fa2ff 0%, #12d8fa 51%, #1fa2ff 100%);
+}
+.login-form-main .right form button:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
 .hero-div-main {
   padding-top: 7rem;
   width: 100%;
@@ -250,7 +336,7 @@ body {
   border-right: 1px solid rgba(255, 255, 255, 0.2039215686);
 }
 .wrapper .sidebar .title {
-  color: rgba(255, 255, 255, 0.2666666667);
+  color: #fff;
   text-align: left;
   margin-top: 2rem;
   font-weight: 400;
@@ -420,7 +506,7 @@ body {
   margin-top: 2em;
   padding: 1em;
   background-color: transparent;
-  color: white;
+  color: #fff;
   border: 1px solid white;
   border-radius: 4px;
   cursor: pointer;
@@ -468,7 +554,7 @@ body {
   margin-top: 2em;
   padding: 1em;
   background-color: transparent;
-  color: white;
+  color: #fff;
   border: 1px solid white;
   border-radius: 4px;
   cursor: pointer;

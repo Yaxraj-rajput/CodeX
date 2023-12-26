@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+$main-bg: #000408;
+$alter: #fff;
+$gray: #222;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body {
-    background-color: #000408;
+    background-color: $main-bg;
     font-family: "Noto Sans", sans-serif;
     overflow-x: hidden;
 }
@@ -19,7 +24,7 @@ body {
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    background-color: #000408;
+    background-color: $main-bg;
     ul {
         display: flex;
         gap: 3rem;
@@ -27,7 +32,7 @@ body {
 
         li {
             a {
-                color: #fff;
+                color: $alter;
                 text-decoration: none;
                 text-transform: capitalize;
             }
@@ -65,20 +70,20 @@ body {
             height: 2.5rem;
             display: flex;
             align-items: center;
-            background-color: #222;
+            background-color: $gray;
             padding: 0rem 1rem;
             border-radius: 0.5rem;
 
             input {
                 width: 100%;
-                background-color: #222;
+                background-color: $gray;
                 outline: none;
                 border: none;
-                color: #fff;
+                color: $alter;
             }
 
             .bi-search {
-                color: #fff;
+                color: $alter;
                 padding: 0.4rem;
                 opacity: 50%;
             }
@@ -92,7 +97,7 @@ body {
                 background-color: transparent;
                 border: none;
                 outline: none;
-                color: #fff;
+                color: $alter;
                 font-size: 1.4rem;
                 padding: 1rem;
                 opacity: 50%;
@@ -103,6 +108,105 @@ body {
                 border: none;
                 outline: none;
                 border-radius: 0.4rem;
+            }
+        }
+    }
+}
+
+.login-form-main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    .left {
+        width: 50%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #205080;
+        border-radius: 0 5rem 5rem 0;
+        background-image: url("../images/loginbg.jpg");
+        background-size: cover;
+    }
+
+    .right {
+        width: 50%;
+        height: 70%;
+        padding: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .title {
+            color: $alter;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+
+            .link {
+                color: #ffffff80;
+                align-self: flex-end;
+
+                a {
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-weight: 900;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            input {
+                width: 100%;
+                font-size: 1.3rem;
+
+                padding: 1rem;
+                border-radius: 0.5rem;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                border: 2px solid #ffffff5c;
+                color: $alter;
+                transition: 0.2s ease-in-out;
+
+                &:focus {
+                    border: 2px solid #ffffff;
+                }
+            }
+
+            button {
+                width: 100%;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                border: none;
+                outline: none;
+                color: $alter;
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+                background-size: 200% auto;
+                cursor: pointer;
+                transition: 0.2s ease-in-out;
+                background-image: linear-gradient(to right, #1fa2ff 0%, #12d8fa 51%, #1fa2ff 100%);
+
+                &:hover {
+                    background-position: right center; /* change the direction of the change here */
+                }
             }
         }
     }
@@ -137,14 +241,14 @@ body {
     }
 
     h1 {
-        color: #fff;
+        color: $alter;
         text-transform: capitalize;
         font-size: 5rem;
         text-align: center;
     }
 
     span {
-        color: #fff;
+        color: $alter;
         opacity: 50%;
         width: 40%;
         text-align: center;
@@ -190,7 +294,7 @@ body {
 
     .title {
         font-size: 3rem;
-        color: #fff;
+        color: $alter;
     }
 
     .cards {
@@ -240,7 +344,7 @@ body {
 
                 height: 30%;
                 h2 {
-                    color: #fff;
+                    color: $alter;
                     font-size: 2rem;
                 }
             }
@@ -275,7 +379,7 @@ body {
         border-right: 1px solid #ffffff34;
 
         .title {
-            color: #ffffff44;
+            color: $alter;
             text-align: left;
 
             margin-top: 2rem;
@@ -288,7 +392,7 @@ body {
             li {
                 text-align: left;
                 padding: 1rem 1rem;
-                color: #fff;
+                color: $alter;
                 font-size: 1.2rem;
                 cursor: pointer;
                 transition: 0.2s ease-in-out;
@@ -301,7 +405,7 @@ body {
                 }
 
                 a {
-                    color: #fff;
+                    color: $alter;
                     text-decoration: none;
 
                     .bi {
@@ -378,7 +482,7 @@ body {
                         background-color: transparent;
                         border: none;
                         outline: none;
-                        color: #fff;
+                        color: $alter;
                         font-size: 1.1rem;
                         padding: 0.5rem;
                         opacity: 0%;
@@ -401,7 +505,7 @@ body {
             }
 
             p {
-                color: #fff;
+                color: $alter;
             }
 
             .code-snippet {
@@ -419,7 +523,7 @@ body {
                 text-wrap: wrap;
                 padding: 1rem;
                 border-radius: 0.5rem;
-                color: #fff;
+                color: $alter;
                 font-family: "Noto Sans", sans-serif;
                 font-size: 1rem;
             }
@@ -430,7 +534,7 @@ body {
             }
 
             .status {
-                color: #fff;
+                color: $alter;
                 font-size: 0.9rem;
             }
         }
@@ -465,8 +569,8 @@ body {
             border: none;
             outline: none;
             padding: 1rem;
-            background-color: #222;
-            color: #fff;
+            background-color: $gray;
+            color: $alter;
             border-radius: 0.7rem;
         }
 
@@ -474,7 +578,7 @@ body {
             margin-top: 2em;
             padding: 1em;
             background-color: transparent;
-            color: white;
+            color: $alter;
             border: 1px solid white;
             border-radius: 4px;
             cursor: pointer;
@@ -518,8 +622,8 @@ body {
             border: none;
             outline: none;
             padding: 1rem;
-            background-color: #222;
-            color: #fff;
+            background-color: $gray;
+            color: $alter;
             border-radius: 0.7rem;
         }
 
@@ -527,7 +631,7 @@ body {
             margin-top: 2em;
             padding: 1em;
             background-color: transparent;
-            color: white;
+            color: $alter;
             border: 1px solid white;
             border-radius: 4px;
             cursor: pointer;

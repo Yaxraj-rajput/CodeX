@@ -169,6 +169,11 @@ def articles():
 def article(article_id):
     article = Articles.query.get(article_id)
     if article:
+        if 'views' in article.__dict__:
+            article.views += 1
+        else:
+            article.views = 1
+        db.session.commit()
         return render_template('view_article.html', article=article)
     else:
         return "Article not found", 404

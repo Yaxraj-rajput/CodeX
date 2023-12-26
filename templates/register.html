@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+{% extends "base.html" %} {% block title %}Login {% endblock %} {% block bodyblock %}
+
   </head>
   <body>
-    <form action="/signup" method="POST">
-      <label for="username">Username:</label><br />
-      <input type="text" id="username" name="username" required /><br />
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br />
-      <label for="password">Password:</label><br />
-      <input type="password" id="password" name="password" required /><br />
+    <div class="login-form-main">
 
-      <input type="submit" value="Register" />
+      <div class="left"></div>
+      <div class="right">
+
+      <h1 class="title">Sign Up</h1>
+    <form action="/signup" method="POST">
+      <input type="text" id="username" name="username" placeholder="username" required />
+      <input type="email" id="email" name="email" placeholder="email" required />
+      <input type="password" id="password" name="password" placeholder="password" required />
+        <p class="link">Already a user? <a href="/login">Login</a></p>
+      <button type="submit"  >Register</button>
     </form>
-  </body>
-</html>
+  </div>
+</div>
+
+{% endblock bodyblock %}

@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <style>
-      .login-form {
-        width: 300px;
-        margin: 0 auto;
-        padding: 100px 0;
-      }
-      .login-form input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-      .login-form button {
-        width: 100%;
-        padding: 10px;
-      }
-    </style>
+{% extends "base.html" %} {% block title %}Login {% endblock %} {% block bodyblock %}
+
   </head>
   <body>
-    <div class="login-form">
+    <div class="login-form-main">
+
+      <div class="left"></div>
+      <div class="right">
+
+      <h1 class="title">Login</h1>
       <form action="/login" method="POST">
         <input type="text" name="username" placeholder="Username" required />
         <input
@@ -31,9 +16,11 @@
           placeholder="Password"
           required
         />
+        <p class="link">Not Registred yet? <a href="/signup">SignUp</a></p>
 
         <button type="submit">Login</button>
       </form>
     </div>
-  </body>
-</html>
+    </div>
+
+{% endblock bodyblock %}
