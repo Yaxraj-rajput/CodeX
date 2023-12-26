@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block title %} {{article.title}} {% endblock title
+%} {% block bodyblock %}
+
+<div class="wrapper">
+  {% include 'sidebar.html' %}
+  <div class="articles-div-main">
+    <div class="article-card" style="width: 100%;">
+      <div class="top-bar">
+        <span class="views">{{ article.views }} Views</span>
+        <div class="buttons">
+          <button class="bookmark"><i class="bi bi-bookmark-plus"></i></button>
+
+          <button class="share"><i class="bi bi-share-fill"></i></button>
+        </div>
+      </div>
+      <h2 class="title" style="font-size: 2.1rem; font-weight: 600">
+        {{ article.title }}
+      </h2>
+
+      <!-- <p>{{ article.description }}</p> -->
+      <pre class="code-snippet">{{ article.code_snippet }}</pre>
+      <pre class="description">{{ article.description }}</pre>
+
+      <p><strong>Genre:</strong> {{ article.genre }}</p>
+      <p><strong>Tags:</strong> {{ article.tags }}</p>
+      <p class="posted-by">
+        Posted by {{ article.post_by }} on {{
+        article.date_time.strftime('%Y-%m-%d') }}
+      </p>
+      <p class="status"><strong>Status:</strong> {{ article.status }}</p>
+      <div id="disqus_thread"></div>
+    </div>
+  </div></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "{{ request.url }}"; // Replace with your page's canonical URL
+      this.page.identifier = "{{ article.id }}"; // Replace with your page's unique identifier
+    };
+
+    (function () {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://nestnet.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript
+    >Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript"
+      >comments powered by Disqus.</a
+    ></noscript
+  >
+  {% endblock bodyblock %}
+</div>

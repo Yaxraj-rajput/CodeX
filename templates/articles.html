@@ -1,0 +1,36 @@
+{% extends 'base.html' %}    
+{% block title %} Articles {% endblock title %} {% block bodyblock %} 
+
+
+<div class="wrapper">
+
+    {% include 'sidebar.html' %}
+
+<div class="articles-div-main">
+    <h2 style="color: #fff; ">Trending Posts</h2>
+    {% for article in allArticles %}
+  <div class="article-card">
+    <a style="text-decoration: none;" href="/article/{{article.article_id}}">
+      <div class="top-bar">
+        <span class="views">{{ article.views }} Views</span>
+        <div class="buttons">
+          <button class="bookmark"><i class="bi bi-bookmark-plus"></i></button>
+
+          <button class="share"><i class="bi bi-share-fill"></i></button>
+        </div></div
+    >
+    <h2 class="title">{{ article.title }}</h2>
+
+    <!-- <p>{{ article.description }}</p> -->
+    <pre class="code-snippet">{{ article.code_snippet }}</pre>
+    <!-- <p><strong>Genre:</strong> {{ article.genre }}</p> -->
+    <!-- <p><strong>Tags:</strong> {{ article.tags }}</p> -->
+    <p class="posted-by">
+      Posted by {{ article.post_by }} on {{
+      article.date_time.strftime('%Y-%m-%d') }}
+    </p>
+    <p class="status"><strong>Status:</strong> {{ article.status }}</p>
+  </div></a>
+  {% endfor %} 
+</div></div>
+{% endblock bodyblock %}

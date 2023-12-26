@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %} New {% endblock title %} {% block
+bodyblock %}
+
+<div class="wrapper">
+  {% include 'sidebar.html' %}
+
+  <div class="new_artcile_main_div">
+    <form action="/new_article" method="POST">
+      <input type="text" name="title" placeholder="Title" />
+      <textarea
+        name="description"
+        rows="7"
+        placeholder="Description"
+      ></textarea>
+      <textarea
+        name="code_snippet"
+        rows="20"
+        placeholder="Code Snippet"
+      ></textarea>
+      <input type="text" name="post_by" placeholder="Posted By" />
+      <input type="text" name="genre" placeholder="Genre" />
+      <input type="text" name="tags" placeholder="Tags" />
+      <input type="number" name="views" placeholder="Views" />
+      <input type="text" name="status" placeholder="Status" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock bodyblock %}

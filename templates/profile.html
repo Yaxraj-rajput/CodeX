@@ -1,0 +1,104 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
+bodyblock %}
+<div class="wrapper">
+  {% include 'sidebar.html' %}
+
+  <div class="profile-div-main">
+    <form method="POST" action="/update_profile">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="{{ user.username }}"
+      />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" value="{{ user.dob }}" />
+
+      <label for="profile_pic">picture:</label>
+      <input
+        type="text"
+        id="profile_pic"
+        name="profile_pic"
+        value="{{ user.profile_pic }}"
+      />
+
+      <label for="tech_stack">Tech Stack:</label>
+      <input
+        type="text"
+        id="tech_stack"
+        name="tech_stack"
+        value="{{ user.tech_stack }}"
+      />
+
+      <label for="bio">Bio:</label>
+      <textarea id="bio" rows="10" name="bio">{{ user.bio }}</textarea>
+
+      <label for="occupation">Occupation:</label>
+      <input
+        type="text"
+        id="occupation"
+        name="occupation"
+        value="{{ user.occupation }}"
+      />
+
+      <label for="location">Location:</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        value="{{ user.location }}"
+      />
+
+      <label for="github">GitHub:</label>
+      <input type="url" id="github" name="github" value="{{ user.github }}" />
+
+      <label for="linkedin">LinkedIn:</label>
+      <input
+        type="url"
+        id="linkedin"
+        name="linkedin"
+        value="{{ user.linkedin }}"
+      />
+
+      <label for="twitter">Twitter:</label>
+      <input
+        type="url"
+        id="twitter"
+        name="twitter"
+        value="{{ user.twitter }}"
+      />
+
+      <label for="facebook">Facebook:</label>
+      <input
+        type="url"
+        id="facebook"
+        name="facebook"
+        value="{{ user.facebook }}"
+      />
+
+      <label for="instagram">Instagram:</label>
+      <input
+        type="url"
+        id="instagram"
+        name="instagram"
+        value="{{ user.instagram }}"
+      />
+
+      <label for="website">Website:</label>
+      <input
+        type="url"
+        id="website"
+        name="website"
+        value="{{ user.website }}"
+      />
+
+      <label for="status">status:</label>
+      <input type="text" id="status" name="status" value="{{ user.status }}" />
+
+      <input type="submit" value="Update Profile" />
+    </form>
+  </div>
+</div>
+{% endblock bodyblock %}
