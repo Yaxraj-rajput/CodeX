@@ -4,7 +4,35 @@ bodyblock %}
   {% include 'sidebar.html' %}
 
   <div class="profile-div-main">
-    <form method="POST" action="/update_profile">
+    <form method="POST" action="/update_profile" enctype="multipart/form-data">
+      <div class="profile-pic">
+        {% if user.profile_pic != "None" %}
+        <img
+          class=""
+          src="../static/profile_pic/{{ user.profile_pic }} "
+          style="width: 20rem; height: 20rem"
+          onclick="document.getElementById('profile_pic').click()"
+          alt=""
+        />
+        {% else %}
+        <img
+          class=""
+          src="../static/profile_pic/default.png"
+          style="width: 20rem; height: 20rem"
+          onclick="document.getElementById('profile_pic').click()"
+          alt=""
+        />
+        {% endif %}
+        <span class="edit-btn"><i class="bi bi-pencil"></i></span>
+      </div>
+      <input
+        type="file"
+        id="profile_pic"
+        name="profile_pic"
+        style="display: none"
+        accept="image/*"
+      />
+
       <label for="username">Username:</label>
       <input
         type="text"
@@ -15,14 +43,6 @@ bodyblock %}
 
       <label for="dob">Date of Birth:</label>
       <input type="date" id="dob" name="dob" value="{{ user.dob }}" />
-
-      <label for="profile_pic">picture:</label>
-      <input
-        type="text"
-        id="profile_pic"
-        name="profile_pic"
-        value="{{ user.profile_pic }}"
-      />
 
       <label for="tech_stack">Tech Stack:</label>
       <input
@@ -98,6 +118,7 @@ bodyblock %}
       <input type="text" id="status" name="status" value="{{ user.status }}" />
 
       <input type="submit" value="Update Profile" />
+      <a href="/logout">Logout</a>
     </form>
   </div>
 </div>

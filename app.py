@@ -1,31 +1,56 @@
-from flask import Flask, flash, jsonify, render_template, request, redirect, session, url_for
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash
-from werkzeug.security import check_password_hash
-import os
-from flask_dance.contrib.google import make_google_blueprint, google
+
+try:
+    from flask import Flask, flash, jsonify, render_template, request, redirect, session, url_for
+    from flask_sqlalchemy import SQLAlchemy
+    from datetime import datetime
+    from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+    from werkzeug.security import generate_password_hash
+    from werkzeug.security import check_password_hash
+    import os
+    from werkzeug.utils import secure_filename
+    from flask_dance.contrib.github import make_github_blueprint, github
+except Exception as e:
+    print("Some modules are missing {}".format(e))
+
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///codex.db'
+
+github_blueprint = make_github_blueprint(client_id='071296f9dfa9072bd5c0', client_secret='57e38b5e49b6026641b07d34142a1bc0f064495d')
+app.register_blueprint(github_blueprint, url_prefix='/github_login')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 secret_key = os.urandom(24)
 app.secret_key = secret_key
 
+@app.route('/github')
+def github_login():
+    if not github.authorized:
+        return redirect(url_for('github.login'))
+    else:
+        account_info = github.get('/user')
+        if account_info.ok:
+            account_info_json = account_info.json()
+            username = account_info_json['login']
+
+            user = User.query.filter_by(username=username).first()
+            if user is None:
+                # User doesn't exist, create a new one
+                user = User(username=username, email=account_info_json['email'], password=generate_password_hash('12345678'))
+                db.session.add(user)
+                db.session.commit()
+
+            # Log in the user
+            login_user(user)
+
+            return redirect(url_for('home'))
+    return '<h1>Request failed!</h1>'
+
+
+
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
-google_blueprint = make_google_blueprint(
-    client_id="572165013988-t4s09l99mh4pi9sfqe8qae15i91nlknn.apps.googleusercontent.com",
-    client_secret="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",
-    scope=["https://www.googleapis.com/auth/userinfo.email", "openid", "https://www.googleapis.com/auth/userinfo.profile"]
-
-)
-app.register_blueprint(google_blueprint, url_prefix="/login")
 
 
 with app.app_context():
@@ -41,7 +66,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.Text(500))
     occupation = db.Column(db.String(80))
     location = db.Column(db.String(80))
-    profile_pic = db.Column(db.String(80))
+    profile_pic = db.Column(db.String(80), default='default.png')
     github = db.Column(db.String(80))
     linkedin = db.Column(db.String(80))
     twitter = db.Column(db.String(80))
@@ -196,7 +221,6 @@ def show_profile():
 @login_required
 def update_profile():
     user_id = current_user.id
-
     user = User.query.get(user_id)
 
     if user:
@@ -206,7 +230,15 @@ def update_profile():
         user.bio = request.form['bio']
         user.occupation = request.form['occupation']
         user.location = request.form['location']
-        user.profile_pic = request.form['profile_pic']
+
+        # Corrected line
+        profile_pic = request.files['profile_pic']
+        if profile_pic:
+            filename = secure_filename(profile_pic.filename)
+            filename = f"{user_id}_{filename}"
+            profile_pic.save(os.path.join('./static/profile_pic', filename))
+            user.profile_pic = filename
+
         user.github = request.form['github']
         user.linkedin = request.form['linkedin']
         user.twitter = request.form['twitter']
@@ -220,8 +252,7 @@ def update_profile():
         return redirect(url_for('show_profile', user_id=user_id))
     else:
         return "User not found", 404
-
-# @app.route("/delete/<int:sno>")
+    # @app.route("/delete/<int:sno>")
 # def delete(sno):
 #     todo = Todo.query.filter_by(sno=sno).first()
 #     db.session.delete(todo)
@@ -245,4 +276,4 @@ def update_profile():
     # return render_template("update.html", todo=todo)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8000,  host='0.0.0.0')
