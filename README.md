@@ -1,7 +1,5 @@
 # CodeX
 
-**Note: This project is currently under development, and some features may be incomplete or subject to change. Contributions and feedback are welcome!**
-
 Welcome to the CodeX repository! This project is a web-based code portal developed using Flask.
 
 ## Overview
@@ -54,5 +52,7 @@ We welcome and appreciate contributions! If you'd like to contribute to the deve
 
 ## License
 This project is licensed under the MIT License.
+
+**Note: This project is currently under development, and some features may be incomplete or subject to change. Contributions and feedback are welcome!**
 
 
