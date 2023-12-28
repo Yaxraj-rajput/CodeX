@@ -50,7 +50,7 @@ To run the CodeX locally, follow these steps:
 
 ## Contributing
 
-We welcome and appreciate contributions! If you'd like to contribute to the development of CodeX, please follow our [contribution guidelines](CONTRIBUTING.md). Your efforts are invaluable, and your contributions will be highly appreciated.
+We welcome and appreciate contributions! If you'd like to contribute to the development of CodeX, please follow our [contribution guidelines](CONTRIBUTE.md). Your efforts are invaluable, and your contributions will be highly appreciated.
 
 ## License
 This project is licensed under the MIT License.
