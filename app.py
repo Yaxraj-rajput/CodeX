@@ -152,6 +152,7 @@ def logout():
 
 
 @app.route("/new_article", methods=['GET', 'POST'])
+@login_required
 def new_article():
     if request.method == 'POST':
         title = request.form['title']
@@ -203,6 +204,7 @@ def article(article_id):
     else:
         return "Article not found", 404
     
+
 
 @app.route('/profile', methods=['POST', 'GET'])
 @login_required

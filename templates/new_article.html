@@ -17,7 +17,13 @@ bodyblock %}
         rows="20"
         placeholder="Code Snippet"
       ></textarea>
-      <input type="text" name="post_by" placeholder="Posted By" />
+      <input
+        type="text"
+        name="post_by"
+        hidden
+        value="{{ current_user.username }}"
+        placeholder="Posted By"
+      />
       <input type="text" name="genre" placeholder="Genre" />
       <input type="text" name="tags" placeholder="Tags" />
       <input type="number" name="views" value="0" hidden />
